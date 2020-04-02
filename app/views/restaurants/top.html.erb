@@ -1,0 +1,10 @@
+<h1>Our top restaurants</h1>
+
+<ul class="list-group">
+  <% @restaurants.each do |restaurant| %>
+    <li class="list-group-item">
+      <%= restaurant.name %>
+      <%= "⭐️" * restaurant.stars %>
+    </li>
+  <% end %>
+</ul>

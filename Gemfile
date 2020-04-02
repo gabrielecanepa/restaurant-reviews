@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'simple_form'
 gem 'faker'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'pry-byebug'

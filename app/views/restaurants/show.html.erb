@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Stars:</strong>
+  <%= @restaurant.stars %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-success" %> |
+<%= link_to 'Back', restaurants_path %>
+<%= link_to "Chef", chef_restaurant_path, class: "btn btn-warning" %>
+
+<hr>
+
+<h3>Reviews:</h3>
+
+<% if @restaurant.reviews.empty? %>
+  <p>There are no reviews yet.</p>
+<% else %>
+  <ul class="list-group">
+    <% @restaurant.reviews.reverse.each do |review| %>
+      <li class="list-group-item">
+        <%= review.content %>
+
+        <%= link_to restaurant_review_path(@restaurant.id, review.id), method: :delete do %>
+          <%= fa_icon "trash" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p>Add a new review:</p>
+
+<%= simple_form_for [ @restaurant, @review ] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>
